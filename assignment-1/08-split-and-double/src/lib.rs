@@ -1,6 +1,12 @@
 pub fn split_and_double(xs: &mut Vec<i32>, mid: usize) -> (&mut [i32], &mut [i32]) {
-    let _ = (xs, mid);
-    todo!("implement split_and_double")
+    let (left, right) = xs.split_at_mut(mid);
+    for x in left.iter_mut() {  // can not use for x in left because it is a mutable borrow, we need to use iter_mut to get mutable references
+        *x *= 2;
+    }
+    for x in right.iter_mut() {
+        *x *= 2;
+    }
+    (left, right)
 }
 
 #[cfg(test)]

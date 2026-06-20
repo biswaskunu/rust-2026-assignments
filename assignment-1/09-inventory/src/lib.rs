@@ -1,15 +1,20 @@
-pub fn restock(
-    inventory: Vec<(String, u32)>,
-    more: Vec<(String, u32)>,
-) -> Vec<(String, u32)> {
-    let _ = (inventory, more);
-    todo!("implement restock")
+pub fn restock(mut inventory: Vec<(String, u32)>, more: Vec<(String, u32)>) -> Vec<(String, u32)> {
+    for (name, qty) in more {
+        if let Some(existing) = inventory.iter_mut().find(|item| item.0 == name) {
+            existing.1 += qty;
+        } else {
+            inventory.push((name, qty));
+        }
+    }
+    inventory
 }
 
 pub fn summary(inventory: &[(String, u32)]) -> String {
-    let _ = inventory;
-    todo!("implement summary")
+    let count = inventory.len();
+    let total_units: u32 = inventory.iter().map(|item| item.1).sum();
+    format!("{} items, {} units", count, total_units)
 }
+
 
 #[cfg(test)]
 mod tests {
