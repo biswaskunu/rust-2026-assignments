@@ -8,7 +8,7 @@ start traversing chars and counting each element, when miss match found pust to 
 finally return result
 
 ## Edge cases handled
-the if executes only when current_char is not None so for empty string the vecot is returned empty
+the "if" executes only when current_char is not None so for empty string the vecot is returned empty
 
 ## Anything special
 

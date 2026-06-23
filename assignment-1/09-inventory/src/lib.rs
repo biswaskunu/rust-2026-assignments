@@ -1,10 +1,13 @@
 pub fn restock(mut inventory: Vec<(String, u32)>, more: Vec<(String, u32)>) -> Vec<(String, u32)> {
+
     for (name, qty) in more {
+
         if let Some(existing) = inventory.iter_mut().find(|item| item.0 == name) {
             existing.1 += qty;
         } else {
             inventory.push((name, qty));
         }
+
     }
     inventory
 }
